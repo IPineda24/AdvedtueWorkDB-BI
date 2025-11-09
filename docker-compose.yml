@@ -1,0 +1,21 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: adventureworks-sql
+    hostname: sqlserver
+    user: root
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=MyStrongPass123!
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    restart: unless-stopped
+    command: >
+      /bin/bash -c " chown -R mssql:mssql /var/opt/mssql && /opt/mssql/bin/sqlservr "
+
+volumes:
+  sqlserver_data:
+    driver: local

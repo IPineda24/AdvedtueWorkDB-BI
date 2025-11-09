@@ -1,0 +1,13 @@
+# Archivos de backup (son muy grandes)
+backups/*.bak
+
+# Logs
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
