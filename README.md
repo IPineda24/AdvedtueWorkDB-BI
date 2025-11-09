@@ -17,7 +17,7 @@ Base de datos de ejemplo **AdventureWorksDW2022** lista para usar en **Docker** 
 
 #### 1️⃣ Clona este repositorio
 ```bash
-git clone [URL-DE-TU-REPO]
+git clone https://github.com/IPineda24/AdvedtueWorkDB-BI.git
 cd adventureworks-docker
 ```
 
