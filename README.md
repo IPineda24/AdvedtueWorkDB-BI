@@ -48,16 +48,12 @@ docker cp .\scripts\restore-database.sql adventureworks-sql:/tmp/
 
 #### 6️⃣ Restaura la base de datos
 ```bash
-docker exec -it adventureworks-sql /opt/mssql-tools18/bin/sqlcmd \
-  -S localhost -U sa -P MyStrongPass123! -C \
-  -i /tmp/restore-database.sql
+docker exec -it adventureworks-sql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P MyStrongPass123! -C -i /tmp/restore-database.sql
 ```
 
 #### 7️⃣ Verifica que la base se haya restaurado
 ```bash
-docker exec -it adventureworks-sql /opt/mssql-tools18/bin/sqlcmd \
-  -S localhost -U sa -P MyStrongPass123! -C \
-  -Q "SELECT name FROM sys.databases WHERE name = 'AdventureWorksDW2022'"
+docker exec -it adventureworks-sql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P MyStrongPass123! -C -Q "SELECT name, database_id, state_desc FROM sys.databases WHERE name = 'AdventureWorksDW2022'"
 ```
 
 Si ves `AdventureWorksDW2022` en los resultados, ¡todo está listo! ✅
