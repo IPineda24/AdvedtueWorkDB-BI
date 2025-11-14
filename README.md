@@ -1,6 +1,6 @@
-# 🐳 AdventureWorksDW2022 en Docker
+# 🐳 AdventureWorks2022 en Docker
 
-Base de datos de ejemplo **AdventureWorksDW2022** lista para usar en **Docker** y conectarse fácilmente con **Power BI**.
+Base de datos de ejemplo **AdventureWorks2022** lista para usar en **Docker** y conectarse fácilmente con **Power BI**.
 
 ---
 
@@ -22,7 +22,7 @@ cd adventureworks-docker
 ```
 
 #### 2️⃣ Agrega el respaldo
-Coloca el archivo `AdventureWorksDW2022.bak` dentro de la carpeta:
+Coloca el archivo `AdventureWorks2022.bak` dentro de la carpeta:
 ```
 backups/
 ```
@@ -40,7 +40,7 @@ docker logs -f adventureworks-sql
 #### 5️⃣ Copia el backup y el script al contenedor
 ```bash
 # Copiar el backup
-docker cp .\backups\AdventureWorksDW2022.bak adventureworks-sql:/var/opt/mssql/data/
+docker cp .\backups\AdventureWorks2022.bak adventureworks-sql:/var/opt/mssql/data/
 
 # Copiar el script de restauración
 docker cp .\scripts\restore-database.sql adventureworks-sql:/tmp/
@@ -53,10 +53,10 @@ docker exec -it adventureworks-sql /opt/mssql-tools18/bin/sqlcmd -S localhost -U
 
 #### 7️⃣ Verifica que la base se haya restaurado
 ```bash
-docker exec -it adventureworks-sql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P MyStrongPass123! -C -Q "SELECT name, database_id, state_desc FROM sys.databases WHERE name = 'AdventureWorksDW2022'"
+docker exec -it adventureworks-sql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P MyStrongPass123! -C -Q "SELECT name, database_id, state_desc FROM sys.databases WHERE name = 'AdventureWorks2022'"
 ```
 
-Si ves `AdventureWorksDW2022` en los resultados, ¡todo está listo! ✅
+Si ves `AdventureWorks2022` en los resultados, ¡todo está listo! ✅
 
 ---
 
@@ -66,7 +66,7 @@ Para listar las tablas disponibles:
 ```bash
 docker exec -it adventureworks-sql /opt/mssql-tools18/bin/sqlcmd \
   -S localhost -U sa -P MyStrongPass123! -C \
-  -Q "USE AdventureWorksDW2022; SELECT name FROM sys.tables ORDER BY name"
+  -Q "USE AdventureWorks2022; SELECT name FROM sys.tables ORDER BY name"
 ```
 
 ---
@@ -76,7 +76,7 @@ docker exec -it adventureworks-sql /opt/mssql-tools18/bin/sqlcmd \
 | Parámetro | Valor |
 |------------|--------|
 | **Servidor** | `localhost,1433` |
-| **Base de datos** | `AdventureWorksDW2022` |
+| **Base de datos** | `AdventureWorks2022` |
 | **Usuario** | `sa` |
 | **Contraseña** | `MyStrongPass123!` |
 

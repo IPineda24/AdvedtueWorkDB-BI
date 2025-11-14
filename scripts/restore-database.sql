@@ -2,26 +2,26 @@ USE master;
 GO
 
 -- Eliminar la base de datos si existe
-IF EXISTS (SELECT name FROM sys.databases WHERE name = 'AdventureWorksDW2022')
+IF EXISTS (SELECT name FROM sys.databases WHERE name = 'AdventureWorks2022')
 BEGIN
-    ALTER DATABASE AdventureWorksDW2022 SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE AdventureWorksDW2022;
+    ALTER DATABASE AdventureWorks2022 SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE AdventureWorks2022;
     PRINT 'Base de datos anterior eliminada';
 END
 GO
 
 -- Restaurar con los nombres correctos
-RESTORE DATABASE AdventureWorksDW2022
-FROM DISK = '/var/opt/mssql/data/AdventureWorksDW2022.bak'
+RESTORE DATABASE AdventureWorks2022
+FROM DISK = '/var/opt/mssql/data/AdventureWorks2022.bak'
 WITH 
-    MOVE 'AdventureWorksDW2022' TO '/var/opt/mssql/data/AdventureWorksDW2022.mdf',
-    MOVE 'AdventureWorksDW2022_log' TO '/var/opt/mssql/data/AdventureWorksDW2022_log.ldf',
+    MOVE 'AdventureWorks2022' TO '/var/opt/mssql/data/AdventureWorks2022.mdf',
+    MOVE 'AdventureWorks2022_log' TO '/var/opt/mssql/data/AdventureWorks2022_log.ldf',
     REPLACE,
     STATS = 10;
 GO
 
 -- Configurar recovery simple
-ALTER DATABASE AdventureWorksDW2022 SET RECOVERY SIMPLE;
+ALTER DATABASE AdventureWorks2022 SET RECOVERY SIMPLE;
 GO
 
 -- Verificar que se restauró correctamente
@@ -33,11 +33,11 @@ SELECT
     state_desc AS State,
     recovery_model_desc AS RecoveryModel
 FROM sys.databases 
-WHERE name = 'AdventureWorksDW2022';
+WHERE name = 'AdventureWorks2022';
 GO
 
 -- Cambiar a la base de datos
-USE AdventureWorksDW2022;
+USE AdventureWorks2022;
 GO
 
 -- Contar tablas
