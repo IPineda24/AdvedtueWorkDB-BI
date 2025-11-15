@@ -9,7 +9,10 @@ Base de datos de ejemplo **AdventureWorks2022** lista para usar en **Docker** y 
 ### 🔧 Requisitos
 - Docker Desktop instalado  
 - 4 GB de RAM disponible  
-- 5 GB de espacio en disco  
+- 5 GB de espacio en disco 
+
+## Descargar Database ⬇️
+https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2022.bak
 
 ---
 
